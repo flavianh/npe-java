@@ -55,6 +55,9 @@ public final class App {
       case "case5":
         case5();
         break;
+      case "case6":
+        case6();
+        break;
       default:
         System.out.println("Invalid case number");
     }
@@ -88,6 +91,12 @@ public final class App {
   private static void case5() {
     // Case 5: Accessing object through a null object reference in a static field
     System.out.println(staticName.length()); // Detected by nullaway!
+  }
+
+  private static void case6() {
+    // Case 6: Getting a null object from a method
+    User user = new User();
+    System.out.println(user.getName().length()); // Detected by nullaway!
   }
 
   public static String getNullString() {
