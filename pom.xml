@@ -176,7 +176,7 @@
               <compilerArgs>
                 <arg>-Xlint:all,-options</arg>
                 <arg>-XDcompilePolicy=simple</arg>
-                <arg>-Xplugin:ErrorProne -Xep:NullAway:ERROR
+                <arg>-Xplugin:ErrorProne -Xep:NullAway:ERROR \
                   -XepOpt:NullAway:AnnotatedPackages=com.autorabit.npe</arg>
               </compilerArgs>
             </configuration>
