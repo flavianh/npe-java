@@ -18,19 +18,11 @@ package com.autorabit.npe;
  * @since 1.0
  */
 public final class App {
-  private String name;
+  private static String staticName;
+  private String privateName;
 
-  App() {
-    System.out.println(this.name.toString()); // not initialized yet!
-    this.name = "test";
-  }
-
-  static void log(Object x) {
-    System.out.println(x.toString());
-  }
-
-  static void foo() {
-    log(null);
+  private App() {
+    System.out.println(privateName.length()); // Caught by nullaway!
   }
 
   /**
@@ -60,22 +52,22 @@ public final class App {
       case "case4":
         case4();
         break;
-      // case "case5":
-      // case5();
-      // break;
+      case "case5":
+        case5();
+        break;
       default:
         System.out.println("Invalid case number");
     }
   }
 
-  // This case is commented out because it will not compile
+  // This case is commented out because it is caught by the java compiler
   // private static void case1() {
   // // Case 1: Accessing null object
   // String s = null;
   // System.out.println(s.length()); // Throws NullPointerException
   // }
 
-  // This case is commented out because it will not compile
+  // This case is commented out because it is caught by the java compiler
   // private static void case2() {
   // // Case 2: Accessing object through an uninitialized reference
   // String t;
@@ -88,17 +80,17 @@ public final class App {
   }
 
   private static void case4() {
-    // Case 4: Accessing null object in an array
+    // Case 4: Accessing null object in an array [null dereference check]
     String[] array = new String[2];
-    System.out.println(array[0].length()); // Throws NullPointerException
+    System.out.println(array[0].length()); // NOT detected by nullaway!
   }
 
-  // private static void case5() {
-  // // Case 5: Accessing object through a null object reference in a static field
-  // System.out.println(name.length()); // Throws NullPointerException
-  // }
+  private static void case5() {
+    // Case 5: Accessing object through a null object reference in a static field
+    System.out.println(staticName.length()); // Detected by nullaway!
+  }
 
   public static String getNullString() {
-    return null;
+    return null; // Caught by nullaway!
   }
 }
