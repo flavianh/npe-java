@@ -1,4 +1,4 @@
-package src.main.java.com.autorabit.npe;
+package com.autorabit.npe;
 
 /**
  * This class contains 5 cases of NullPointerException. The cases are commented

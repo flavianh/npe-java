@@ -168,25 +168,16 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.0</version>
-        <executions>
-          <execution>
-            <id>default-compile</id>
-            <phase>compile</phase>
-            <configuration>
-              <compilerArgs>
-                <arg>-Xlint:all,-options</arg>
-                <arg>-XDcompilePolicy=simple</arg>
-                <arg>-Xplugin:ErrorProne -Xep:NullAway:ERROR \
-                  -XepOpt:NullAway:AnnotatedPackages=com.autorabit.npe</arg>
-              </compilerArgs>
-            </configuration>
-          </execution>
-        </executions>
         <configuration>
-          <source>19</source>
-          <target>19</target>
-          <showWarnings>true</showWarnings>
-          <failOnWarning>true</failOnWarning>
+          <source>8</source>
+          <target>8</target>
+          <encoding>UTF-8</encoding>
+          <compilerArgs>
+            <arg>-XDcompilePolicy=simple</arg>
+            <arg>-Xplugin:ErrorProne \
+              -Xep:NullAway:ERROR \
+              -XepOpt:NullAway:AnnotatedPackages=com</arg>
+          </compilerArgs>
           <annotationProcessorPaths>
             <path>
               <groupId>com.google.errorprone</groupId>
@@ -198,8 +189,6 @@
               <artifactId>nullaway</artifactId>
               <version>${nullaway.version}</version>
             </path>
-            <!-- Add any other annotation processors here,
-                 even if they are also on the project dependency classpath. -->
           </annotationProcessorPaths>
         </configuration>
       </plugin>
